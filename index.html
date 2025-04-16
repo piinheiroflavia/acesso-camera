@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+        <script src="camera.js"></script>
+        <title>JS Camera API | KMT</title>
+    </head>
+    <body>
+        <nav style="background-color: black; padding: 5px; ">
+            <a href="./cameraDisposito.html" style="color: #fff;">trocar</a>
+        </nav>
+        <div class="mt-5" style="text-align: center;">
+            <div style="text-align: center;">
+                <video id="video" style="text-align: center; border-radius: 20px;"></video>
+            </div>
+            <div >
+            <button onclick="switchCamera()" class="btn btn-primary">Trocar câmera</button>
+                <button type="button" class="btn btn-primary" onclick="clickPhoto();">Tirar Foto</button>
+            </div>
+            <hr>
+            <h3>Sua imagem aqui!</h3>
+            <canvas id="myCanvas" width="300" height="300" style="text-align: center; border-radius: 20px;"></canvas>
+        </div>
+
+    </body>
+</html>

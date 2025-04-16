@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" accept="image/*" capture="environment" id="inputCamera" style="display:none" onchange="handlePhoto(this)">
+    <button class="btn btn-primary" onclick="document.getElementById('inputCamera').click()">Tirar Foto</button>
+
+    <br><br>
+    <img id="preview" width="300" style="border-radius: 10px;" />
+
+
+    <script>
+        function handlePhoto(input) {
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = document.getElementById('preview');
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    </script>
+</body>
+</html>
+
