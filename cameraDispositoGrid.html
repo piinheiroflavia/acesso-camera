@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Foto com Grade</title>
+  <style>
+    .image-wrapper {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin-top: 20px;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .grid-overlay div {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .grid-h1 { top: 33%; left: 0; width: 100%; height: 1px; }
+    .grid-h2 { top: 66%; left: 0; width: 100%; height: 1px; }
+
+    .grid-v1 { left: 33%; top: 0; height: 100%; width: 1px; }
+    .grid-v2 { left: 66%; top: 0; height: 100%; width: 1px; }
+  </style>
+</head>
+<body>
+
+  <input type="file" accept="image/*" capture="environment" id="inputCamera" style="display:none" onchange="handlePhoto(this)">
+  <button class="btn btn-primary" onclick="document.getElementById('inputCamera').click()">Tirar Foto</button>
+
+  <div class="image-wrapper" id="photoContainer" style="display: none;">
+    <img id="preview" />
+    <div class="grid-overlay">
+      <div class="grid-h1"></div>
+      <div class="grid-h2"></div>
+      <div class="grid-v1"></div>
+      <div class="grid-v2"></div>
+    </div>
+  </div>
+
+  <script>
+    function handlePhoto(input) {
+      const file = input.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.getElementById('preview');
+        img.src = e.target.result;
+        document.getElementById('photoContainer').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+
+</body>
+</html>
