@@ -51,6 +51,10 @@
     </nav>
 
     <div class="mt-5" style="text-align: center;">
+        <button onclick="abrirCamera()" class="btn btn-primary">Abrir Câmera</button>
+    </div>
+
+    <div class="mt-5" style="text-align: center; display: none;" id="divCamera">
         <div class="camera-wrapper">
             <video id="video" autoplay playsinline></video>
 
@@ -69,8 +73,12 @@
         </div>
 
         <hr>
+    </div>
+    <div style="text-align: center; display: none;" id="divImg">
         <h3>Sua imagem aqui!</h3>
         <canvas id="myCanvas" width="300" height="300" style="border-radius: 20px;"></canvas>
     </div>
+
+
 </body>
 </html>

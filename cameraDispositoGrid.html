@@ -1,74 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Foto com Grade</title>
+  <title>Câmera com Grid</title>
   <style>
-    .image-wrapper {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      margin-top: 20px;
-    }
 
-    .image-wrapper img {
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-
-    .grid-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .grid-overlay div {
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .grid-h1 { top: 33%; left: 0; width: 100%; height: 1px; }
-    .grid-h2 { top: 66%; left: 0; width: 100%; height: 1px; }
-
-    .grid-v1 { left: 33%; top: 0; height: 100%; width: 1px; }
-    .grid-v2 { left: 66%; top: 0; height: 100%; width: 1px; }
   </style>
 </head>
 <body>
-
-  <input type="file" accept="image/*" capture="environment" id="inputCamera" style="display:none" onchange="handlePhoto(this)">
-  <button class="btn btn-primary" onclick="document.getElementById('inputCamera').click()">Tirar Foto</button>
-
-  <div class="image-wrapper" id="photoContainer" style="display: none;">
-    <img id="preview" />
-    <div class="grid-overlay">
-      <div class="grid-h1"></div>
-      <div class="grid-h2"></div>
-      <div class="grid-v1"></div>
-      <div class="grid-v2"></div>
-    </div>
-  </div>
+    <input type="file" accept="image/*" id="inputCamera" onchange="handlePhoto(this)" hidden>
+    <button onclick="document.getElementById('inputCamera').click()">Selecionar ou Tirar Foto</button>
+    
+    <br><br>
+    <img id="preview" width="300" style="border-radius: 10px;" />
+    
 
   <script>
     function handlePhoto(input) {
-      const file = input.files[0];
-      if (!file) return;
+    const file = input.files[0];
+    if (!file) return;
 
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const img = document.getElementById('preview');
-        img.src = e.target.result;
-        document.getElementById('photoContainer').style.display = 'block';
-      };
-      reader.readAsDataURL(file);
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        document.getElementById('preview').src = e.target.result;
+        // Aqui você pode chamar sua função de inferência automaticamente, se quiser
+        // runInference();
+    };
+    reader.readAsDataURL(file);
     }
-  </script>
 
+  </script>
 </body>
 </html>

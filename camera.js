@@ -40,6 +40,11 @@ function clickPhoto() {
     }
 }
 
+function abrirCamera(){
+    document.querySelector('#divCamera').style.display = 'block';
+    document.querySelector('#divImg').style.display = 'block';
+}
+
 // Inicializa tudo ao carregar a página
 window.onload = function () {
     video = document.querySelector('video');
